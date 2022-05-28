@@ -50,6 +50,7 @@ public class CatalogModel : BasePageModel
 				RomId = s.RomId,
 				GameId = s.GameId,
 				SystemId = s.SystemId,
+				SystemModeId = s.SystemModeId,
 				SystemFrameRateId = s.SystemFrameRateId
 			})
 			.SingleOrDefaultAsync();
@@ -118,6 +119,21 @@ public class CatalogModel : BasePageModel
 				externalMessages.Add($"System changed from {submission.System?.Code ?? ""} to {system.Code}");
 				submission.SystemId = Catalog.SystemId!.Value;
 				submission.System = system;
+			}
+		}
+
+		if (submission.SystemModeId != Catalog.SystemModeId)
+		{
+			var system = await _db.GameSystems.SingleOrDefaultAsync(s => s.Id == Catalog.SystemModeId!.Value);
+			if (system is null)
+			{
+				ModelState.AddModelError($"{nameof(Catalog)}.{nameof(Catalog.SystemModeId)}", $"Unknown System Id: {Catalog.SystemModeId!.Value}");
+			}
+			else
+			{
+				externalMessages.Add($"System mode changed from {submission.SystemMode ?? ""} to {system.DisplayName}");
+				submission.SystemModeId = Catalog.SystemModeId!.Value;
+				submission.SystemMode = system.DisplayName;
 			}
 		}
 

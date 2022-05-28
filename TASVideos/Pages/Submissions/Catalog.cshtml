@@ -13,6 +13,10 @@
 				<select asp-for="Catalog.SystemId" asp-items="Model.AvailableSystems" class="form-control"></select>
 			</form-group>
 			<form-group>
+				<label asp-for="Catalog.SystemModeId" class="form-control-label"></label>
+				<select asp-for="Catalog.SystemModeId" asp-items="Model.AvailableSystems" class="form-control"></select>
+			</form-group>
+			<form-group>
 				<label asp-for="Catalog.SystemFrameRateId" class="form-control-label"></label>
 				<select asp-for="Catalog.SystemFrameRateId" asp-items="@Model.AvailableSystemFrameRates" class="form-control"></select>
 			</form-group>
@@ -63,6 +67,7 @@
 	<script>
 		enableCataloging(
 			"@Html.IdFor(m => m.Catalog.SystemId)",
+			"@Html.IdFor(m => m.Catalog.SystemModeId)",
 			"@Html.IdFor(m => m.Catalog.SystemFrameRateId)",
 			"@Html.IdFor(m => m.Catalog.GameId)",
 			"@Html.IdFor(m => m.Catalog.RomId)",

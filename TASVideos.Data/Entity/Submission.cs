@@ -56,6 +56,9 @@ public class Submission : BaseEntity, ITimeable
 	public int? SystemId { get; set; }
 	public virtual GameSystem? System { get; set; }
 
+	public int? SystemModeId { get; set; }
+	public string? SystemMode { get; set; }
+
 	public int? SystemFrameRateId { get; set; }
 	public virtual GameSystemFrameRate? SystemFrameRate { get; set; }
 

@@ -172,6 +172,10 @@
 				<th>Game</th>
 				<td><game-link id="Model.Submission.GameId!.Value">@Model.Submission.GameName</game-link></td>
 			</tr>
+			<tr condition="!String.IsNullOrEmpty(Model.Submission.SystemMode) && !Model.Submission.SystemMode.Equals(Model.Submission.SystemDisplayName)">
+				<th>Console Mode</th>
+				<td>@Model.Submission.SystemMode</td>
+			</tr>
 		</table>
 		<small>
 			Submitted by @Model.Submission.Submitter on @Model.Submission.Submitted

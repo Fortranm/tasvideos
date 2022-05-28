@@ -23,6 +23,8 @@ public class SubmissionDisplayModel : ISubmissionDisplay
 
 	public string? SystemCode { get; set; }
 
+	public string? SystemMode { get; set; }
+
 	[Display(Name = "Game Name")]
 	public string? GameName { get; set; }
 
@@ -87,6 +89,7 @@ public class SubmissionDisplayModel : ISubmissionDisplay
 	public int? GameId { get; set; }
 
 	internal int? SystemId { get; set; }
+	internal int? SystemModeId { get; set; }
 	internal int? SystemFrameRateId { get; set; }
 	internal int? RomId { get; set; }
 }
